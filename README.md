@@ -78,7 +78,3 @@ The next phase of the project will add a full-text search functionality. This wi
 - Indexing the data from the uploaded NDJSON file.
 - Implementing a search bar on the frontend.
 - Returning filtered results based on the search input.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
