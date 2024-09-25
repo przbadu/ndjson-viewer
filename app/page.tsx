@@ -50,11 +50,11 @@ export default function Home() {
 
   return (
     <div className="w-full h-screen flex flex-col">
-      <h1 className="text-2xl font-bold mb-4">NDJSON File Viewer</h1>
+      <h1 className="text-2xl font-bold mb-4 ml-8 mt-8">NDJSON File Viewer</h1>
 
       <div
         {...getRootProps()}
-        className={`flex-grow flex items-center justify-center border-2 border-dashed rounded-lg p-4 ${
+        className={`flex-grow flex items-center justify-center rounded-lg ${
 isDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
 }`}
       >
@@ -71,27 +71,43 @@ isDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
             <AlertDialogDescription>{error}</AlertDialogDescription>
           </AlertDialog>
         )}
-
-        {data.length > 0 && (
-          <Table>
-            <TableHeader>
-              <TableRow>
-                {Object.keys(data[0]).map((key) => (
-                  <TableHead key={key}>{key}</TableHead>
-                ))}
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {data.map((row, index) => (
-                <TableRow key={index}>
-                  {Object.values(row).map((value, cellIndex) => (
-                    <TableCell key={cellIndex}>{JSON.stringify(value)}</TableCell>
-                  ))}
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        )}
+        a
+        <div className='px-6 pb-4 h-full shrink overflow-hidden flex flex-col'>
+          <div className='flex flex-row items-start h-full shrink overflow-hidden'>
+            <div className='h-full min-w-[30%] shrink-0 !w-full'>
+              <div className='flex flex-col h-full font-mono w-full bg-white rounded-lg border text-[12px] relative'>
+                <div className='overflow-auto overscroll-none w-full h-full rounded-lg'>
+                <div className='z-10 top-0 sticky w-full rounded-t-lg border-b'>
+                  {data.length > 0 && (
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          {Object.keys(data[0]).map((key) => (
+                            <TableHead key={key} className='shrink-0 border-r border-gray-200 py-1.5 px-4 font-semibold border-b -mb-[1px]'>{key}</TableHead>
+                          ))}
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {data.map((row, index) => (
+                          <TableRow key={index} >
+                            {Object.values(row).map((value, cellIndex) => (
+                              <TableCell
+                                  key={cellIndex}
+                              className="shrink-0 border-r border-b border-gray-200 focus:z-10 focus:shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]"
+                              style={{position: 'relative', top: '0px', width: '312px'}}
+                                >{value}</TableCell>
+                            ))}
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  )}
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
