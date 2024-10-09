@@ -1,7 +1,7 @@
 "use client";
 
 // pages/index.js
-import { ChangeEvent, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import {
   Table,
@@ -20,7 +20,7 @@ import { flattenObject } from "@/lib/utils";
 
 export default function Home() {
   const [data, setData] = useState([]);
-  const [mergeNested, _setMergeNested] = useState(true);
+  const [mergeNested] = useState(true);
   const [error, setError] = useState(null);
 
   const handleFileUpload = useCallback(async (file) => {
